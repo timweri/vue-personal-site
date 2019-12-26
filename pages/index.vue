@@ -1,72 +1,70 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        vue-personal-site
-      </h1>
-      <h2 class="subtitle">
-        A personal website
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <full-page ref="fullpage" :options="{scrollOverflow: true}" id="fullpage">
+    <div class="section section1">
+      <div class="container-bound">
+        <span class="title">Duc Thanh Nguyen</span>
       </div>
     </div>
-  </div>
+    <div class="section">
+      <div class="section-container container-bound">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel justo scelerisque, commodo magna eget, lacinia elit. Proin ipsum diam, egestas vitae nunc sit amet, tempus porttitor lectus. Curabitur ut turpis felis. Nunc felis arcu, convallis nec placerat vitae, sagittis at lectus. Mauris eleifend egestas orci, eget euismod nulla consectetur at. Proin quis massa non diam malesuada aliquam. Quisque sit amet convallis orci, eget aliquet dolor. Nulla volutpat accumsan arcu in semper. Sed luctus, quam eget pretium rutrum, orci purus ullamcorper ex, at tincidunt nisi augue vitae sapien.</p>
+        <p>Aliquam sed mauris id enim suscipit placerat in at orci. Duis eu purus vel sem vehicula sodales ut at augue. Sed consectetur tristique ultrices. Aliquam mi metus, aliquam vel accumsan at, consequat ut purus. Sed vel ante non arcu malesuada malesuada eu eu risus. Sed a justo vel nulla scelerisque lobortis. Aenean sed consequat risus. In faucibus pharetra est, in mattis purus auctor lobortis. Pellentesque imperdiet nunc sit amet commodo pharetra. Aliquam consequat dui vestibulum, lacinia leo ac, placerat purus. Curabitur augue nisl, condimentum ut ligula iaculis, dictum feugiat dolor. Aliquam volutpat dolor non dui pulvinar, eget pellentesque sapien pharetra. Vivamus rutrum erat mollis vehicula bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse non consectetur leo. In congue tempus felis nec porta.</p>
+        <p>Sed quis purus quis ligula porta varius. Cras hendrerit a odio vel dapibus. Aenean viverra semper mi, id cursus nibh malesuada lobortis. Donec luctus, justo sit amet lobortis posuere, turpis dui dictum purus, nec pharetra nunc mauris non ipsum. Pellentesque consequat nibh a lorem suscipit varius. Vestibulum dapibus ipsum sem, et commodo nisi congue ut. Pellentesque dolor risus, convallis vestibulum enim non, scelerisque viverra purus. Aenean consectetur aliquam turpis. Ut ornare magna eu odio blandit cursus. Aliquam erat volutpat. Duis ex est, accumsan non odio vitae, sodales cursus arcu. Etiam iaculis sit amet erat vitae porttitor.</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-container container-bound">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel justo scelerisque, commodo magna eget, lacinia elit. Proin ipsum diam, egestas vitae nunc sit amet, tempus porttitor lectus. Curabitur ut turpis felis. Nunc felis arcu, convallis nec placerat vitae, sagittis at lectus. Mauris eleifend egestas orci, eget euismod nulla consectetur at. Proin quis massa non diam malesuada aliquam. Quisque sit amet convallis orci, eget aliquet dolor. Nulla volutpat accumsan arcu in semper. Sed luctus, quam eget pretium rutrum, orci purus ullamcorper ex, at tincidunt nisi augue vitae sapien.</p>
+        <p>Aliquam sed mauris id enim suscipit placerat in at orci. Duis eu purus vel sem vehicula sodales ut at augue. Sed consectetur tristique ultrices. Aliquam mi metus, aliquam vel accumsan at, consequat ut purus. Sed vel ante non arcu malesuada malesuada eu eu risus. Sed a justo vel nulla scelerisque lobortis. Aenean sed consequat risus. In faucibus pharetra est, in mattis purus auctor lobortis. Pellentesque imperdiet nunc sit amet commodo pharetra. Aliquam consequat dui vestibulum, lacinia leo ac, placerat purus. Curabitur augue nisl, condimentum ut ligula iaculis, dictum feugiat dolor. Aliquam volutpat dolor non dui pulvinar, eget pellentesque sapien pharetra. Vivamus rutrum erat mollis vehicula bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse non consectetur leo. In congue tempus felis nec porta.</p>
+        <p>Sed quis purus quis ligula porta varius. Cras hendrerit a odio vel dapibus. Aenean viverra semper mi, id cursus nibh malesuada lobortis. Donec luctus, justo sit amet lobortis posuere, turpis dui dictum purus, nec pharetra nunc mauris non ipsum. Pellentesque consequat nibh a lorem suscipit varius. Vestibulum dapibus ipsum sem, et commodo nisi congue ut. Pellentesque dolor risus, convallis vestibulum enim non, scelerisque viverra purus. Aenean consectetur aliquam turpis. Ut ornare magna eu odio blandit cursus. Aliquam erat volutpat. Duis ex est, accumsan non odio vitae, sodales cursus arcu. Etiam iaculis sit amet erat vitae porttitor.</p>
+      </div>
+    </div>
+  </full-page>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  }
-}
+};
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+<style lang="scss">
+  @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+  .container {
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .section-container {
+    display: block;
+    padding: 0 15px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+  .section-top-blank {
+    height: 70px;
+    width: 100%;
+  }
+  .section1 {
+    text-align: center;
+    margin: 15px 0;
+    .title {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      color: $color;
+      font-size: 3rem;
+      text-decoration: none;
+      word-wrap: break-word;
+    }
+  }
+  @media all and (min-width: $large) {
+    .container-bound {
+      margin-left: auto;
+      margin-right: auto;
+      width: $large;
+    }
+  }
 </style>

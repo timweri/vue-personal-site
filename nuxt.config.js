@@ -27,7 +27,9 @@ export default {
     /*
    ** Plugins to load before mounting the App
    */
-    plugins: [],
+    plugins: [
+        { src: '~/plugins/fullpage', mode: 'client', ssr: false},
+    ],
     /*
    ** Nuxt.js dev-modules
    */
@@ -38,6 +40,7 @@ export default {
     modules: [
     // Doc: https://bootstrap-vue.js.org
         'bootstrap-vue/nuxt',
+        '@nuxtjs/style-resources',
     ],
     /*
    ** Build configuration
@@ -47,5 +50,13 @@ export default {
      ** You can extend webpack config here
      */
         extend(config, ctx) {},
+    },
+    /*
+   ** Style Resources
+   */
+    styleResources: {
+        scss: [
+            'assets/scss/main.scss',
+        ],
     },
 };
