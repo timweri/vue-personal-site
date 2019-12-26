@@ -52,9 +52,6 @@
 </template>
 
 <script>
-import jQuery from 'jquery';
-const $ = jQuery;
-
 export default {
     data() {
         return {

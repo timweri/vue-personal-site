@@ -15,6 +15,9 @@ export default {
             },
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+        script: [
+            { src: 'https://code.jquery.com/jquery-3.4.1.min.js' },
+        ],
     },
     /*
      ** Customize the progress-bar color
@@ -58,5 +61,8 @@ export default {
         scss: [
             'assets/scss/main.scss',
         ],
+    },
+    router: {
+        base: '/',
     },
 };
