@@ -59,10 +59,4 @@ export default {
             'assets/scss/main.scss',
         ],
     },
-    /*
-     ** Generate
-     */
-    generate: {
-      dir: 'docs',
-    },
 };
