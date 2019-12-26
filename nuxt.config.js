@@ -1,8 +1,8 @@
 export default {
     mode: 'spa',
     /*
-   ** Headers of the page
-   */
+     ** Headers of the page
+     */
     head: {
         title: process.env.npm_package_name || '',
         meta: [
@@ -17,34 +17,34 @@ export default {
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
     /*
-   ** Customize the progress-bar color
-   */
+     ** Customize the progress-bar color
+     */
     loading: { color: '#fff' },
     /*
-   ** Global CSS
-   */
+     ** Global CSS
+     */
     css: [],
     /*
-   ** Plugins to load before mounting the App
-   */
+     ** Plugins to load before mounting the App
+     */
     plugins: [
         { src: '~/plugins/fullpage', mode: 'client', ssr: false},
     ],
     /*
-   ** Nuxt.js dev-modules
-   */
+     ** Nuxt.js dev-modules
+     */
     buildModules: [],
     /*
-   ** Nuxt.js modules
-   */
+     ** Nuxt.js modules
+     */
     modules: [
     // Doc: https://bootstrap-vue.js.org
         'bootstrap-vue/nuxt',
         '@nuxtjs/style-resources',
     ],
     /*
-   ** Build configuration
-   */
+     ** Build configuration
+     */
     build: {
     /*
      ** You can extend webpack config here
@@ -52,11 +52,17 @@ export default {
         extend(config, ctx) {},
     },
     /*
-   ** Style Resources
-   */
+     ** Style Resources
+     */
     styleResources: {
         scss: [
             'assets/scss/main.scss',
         ],
+    },
+    /*
+     ** Generate
+     */
+    generate: {
+      dir: 'docs',
     },
 };
