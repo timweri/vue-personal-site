@@ -25,7 +25,17 @@
     <div class="section fp-auto-height">
       <div class="section-container container-bound">
         <h1>Experience</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel justo scelerisque, commodo magna eget, lacinia elit. Proin ipsum diam, egestas vitae nunc sit amet, tempus porttitor lectus. Curabitur ut turpis felis. Nunc felis arcu, convallis nec placerat vitae, sagittis at lectus. Mauris eleifend egestas orci, eget euismod nulla consectetur at. Proin quis massa non diam malesuada aliquam. Quisque sit amet convallis orci, eget aliquet dolor. Nulla volutpat accumsan arcu in semper. Sed luctus, quam eget pretium rutrum, orci purus ullamcorper ex, at tincidunt nisi augue vitae sapien.</p>
+        <b-card
+          title="Card Title"
+          tag="article"
+          class="mb-2"
+        >
+          <b-card-text>
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          </b-card-text>
+
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
         <p>Aliquam sed mauris id enim suscipit placerat in at orci. Duis eu purus vel sem vehicula sodales ut at augue. Sed consectetur tristique ultrices. Aliquam mi metus, aliquam vel accumsan at, consequat ut purus. Sed vel ante non arcu malesuada malesuada eu eu risus. Sed a justo vel nulla scelerisque lobortis. Aenean sed consequat risus. In faucibus pharetra est, in mattis purus auctor lobortis. Pellentesque imperdiet nunc sit amet commodo pharetra. Aliquam consequat dui vestibulum, lacinia leo ac, placerat purus. Curabitur augue nisl, condimentum ut ligula iaculis, dictum feugiat dolor. Aliquam volutpat dolor non dui pulvinar, eget pellentesque sapien pharetra. Vivamus rutrum erat mollis vehicula bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse non consectetur leo. In congue tempus felis nec porta.</p>
         <p>Sed quis purus quis ligula porta varius. Cras hendrerit a odio vel dapibus. Aenean viverra semper mi, id cursus nibh malesuada lobortis. Donec luctus, justo sit amet lobortis posuere, turpis dui dictum purus, nec pharetra nunc mauris non ipsum. Pellentesque consequat nibh a lorem suscipit varius. Vestibulum dapibus ipsum sem, et commodo nisi congue ut. Pellentesque dolor risus, convallis vestibulum enim non, scelerisque viverra purus. Aenean consectetur aliquam turpis. Ut ornare magna eu odio blandit cursus. Aliquam erat volutpat. Duis ex est, accumsan non odio vitae, sodales cursus arcu. Etiam iaculis sit amet erat vitae porttitor.</p>
       </div>
@@ -48,6 +58,7 @@ const $ = jQuery;
 export default {
     data() {
         return {
+            keys: {37: 1, 38: 1, 39: 1, 40: 1},
             scrollPrev: window.scrollY,
             handlingScroll: false,
             options: {
@@ -71,9 +82,43 @@ export default {
         };
     },
     methods: {
+        preventDefault(e) {
+            e = e || window.event;
+            if (e.preventDefault)
+                e.preventDefault();
+            e.returnValue = false;
+        },
+        preventDefaultForScrollKeys(e) {
+            if (this.keys[e.keyCode]) {
+                this.preventDefault(e);
+                return false;
+            }
+        },
+        disable_scroll() {
+            if (window.addEventListener) // older FF
+                window.addEventListener('DOMMouseScroll', this.preventDefault, false);
+            document.addEventListener('wheel', this.preventDefault, {passive: false}); // Disable scrolling in Chrome
+            window.onwheel = this.preventDefault; // modern standard
+            window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
+            window.ontouchmove  = this.preventDefault; // mobile
+            document.onkeydown  = this.preventDefaultForScrollKeys;
+        },
+        enable_scroll() {
+            if (window.removeEventListener)
+                window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+            document.removeEventListener('wheel', this.preventDefault, {passive: false}); // Enable scrolling in Chrome
+            window.onmousewheel = document.onmousewheel = null;
+            window.onwheel = null;
+            window.ontouchmove = null;
+            document.onkeydown = null;
+        },
         handleScroll(event) {
-            if (this.handlingScroll) return;
+            if (this.handlingScroll) {
+                this.scrollPrev = window.scrollY;
+                return;
+            }
             this.handlingScroll = true;
+            this.disable_scroll();
             const that = this;
 
             let direction = null;
@@ -86,26 +131,29 @@ export default {
 
             if (direction === 'down' && document.documentElement.scrollTop < window.innerHeight * 3 / 4) {
                 $('html, body').animate({
-                    scrollTop: $('.section.section2').offset().top,
+                    scrollTop: $('.section.section2').offset().top - 50,
                 }, 500, function () {
                     that.handlingScroll = false;
+                    that.enable_scroll();
                 });
-            } else if (direction === 'up' && document.documentElement.scrollTop < window.innerHeight * 3 / 4) {
+            } else if (direction === 'up' && document.documentElement.scrollTop > 100 && document.documentElement.scrollTop < window.innerHeight * 3 / 4) {
                 $('html, body').animate({
-                    scrollTop: $('.section.section1').offset().top,
+                    scrollTop: 0,
                 }, 500, function () {
                     that.handlingScroll = false;
+                    that.enable_scroll();
                 });
             } else {
                 this.handlingScroll = false;
+                this.enable_scroll();
             }
         },
     },
     created() {
-        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll, {passive: false});
     },
     destroyed() {
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('scroll', this.handleScroll, {passive: false});
     },
 };
 </script>
