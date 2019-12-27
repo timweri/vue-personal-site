@@ -165,6 +165,11 @@
 
 <script>
 export default {
+    head() {
+        return {
+            titleTemplate: 'Duc Thanh Nguyen',
+        };
+    },
     data() {
         return {
             keys: {37: 1, 38: 1, 39: 1, 40: 1},
