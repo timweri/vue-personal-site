@@ -65,16 +65,6 @@ export default {
                 autoScrolling: false,
                 menu: '#myMenu',
                 anchors: ['opening', 'about', 'experience', 'contact', 'lastPage'],
-                // navigation: true,
-                // navigationTooltips: ['', 'About', 'Experience'],
-                // showActiveTooltip: true,
-                onLeave: function (index, nextIndex, direction){
-                    if (nextIndex === 1) {
-                        console.log('next = 1');
-                    } else if (nextIndex === 2) {
-                        console.log('next = 2');
-                    }
-                },
             },
         };
     },
@@ -110,7 +100,7 @@ export default {
             document.onkeydown = null;
         },
         handleScroll(event) {
-            if (this.handlingScroll) {
+            if (this.handlingScroll || ['#experience', '#contact'].includes(window.location.hash)) {
                 this.scrollPrev = window.scrollY;
                 return;
             }
@@ -126,14 +116,14 @@ export default {
             }
             this.scrollPrev = window.scrollY;
 
-            if (direction === 'down' && document.documentElement.scrollTop < window.innerHeight * 3 / 4) {
+            if (direction === 'down' && document.documentElement.scrollTop < window.innerHeight * 3 / 5) {
                 $('html, body').animate({
                     scrollTop: $('.section.section2').offset().top - 50,
                 }, 500, function () {
                     that.handlingScroll = false;
                     that.enable_scroll();
                 });
-            } else if (direction === 'up' && document.documentElement.scrollTop > 100 && document.documentElement.scrollTop < window.innerHeight * 3 / 4) {
+            } else if (direction === 'up' && document.documentElement.scrollTop > 100 && document.documentElement.scrollTop < window.innerHeight * 3 / 5) {
                 $('html, body').animate({
                     scrollTop: 0,
                 }, 500, function () {
